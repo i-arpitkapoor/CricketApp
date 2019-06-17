@@ -1,0 +1,26 @@
+npm install -g live-server
+live-server Quiz
+cd ..
+live-server Quiz\
+cd ..
+cd  ..
+live-server Q
+live-server Quiz\
+live-server Q
+cd .. ..
+cd ..
+live-server Quiz\
+cd .. ..
+cd ..
+live-server Quiz\
+cd .. ..
+cd ..
+live-server Quiz\
+live-server Quiz\
+cd .. ..
+live-server Quiz\
+ls
+cd ..
+ls
+cd ..
+live-server "Cricket App\
