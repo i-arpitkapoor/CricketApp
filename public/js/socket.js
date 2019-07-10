@@ -14,6 +14,9 @@ const messageTemplate = document.querySelector('#message-template').innerHTML
 //options
 const { unique_id } = Qs.parse(location.search, { ignoreQueryPrefix: true})
 
+//messages
+let allMessages = []
+
 
 
 const autoscroll = () => {
@@ -48,8 +51,23 @@ socket.on('message', (message) => {
     const html = Mustache.render(messageTemplate, {
         message: message
     })
+    allMessages.push(message)
+    let messageJSON = JSON.stringify(allMessages)
+    localStorage.setItem('messages', messageJSON)
     $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
+})
+
+socket.on('render', () => {
+    userMessages = localStorage.getItem('messages')
+    userMessagesArray = JSON.parse(userMessages)
+    userMessagesArray.forEach(message => {
+        const html = Mustache.render(messageTemplate, {
+            message: message
+        })
+        allMessages.push(message)
+        $messages.insertAdjacentHTML('beforeend', html)
+    })
 })
 
 

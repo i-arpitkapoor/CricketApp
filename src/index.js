@@ -28,7 +28,9 @@ io.on('connection', (socket) => {   //socket contains info of that particular co
 
         socket.join(user.room)
 
-        socket.emit('message', 'Welcome!')
+        socket.emit('render')
+        socket.emit('message', 'Welcome')
+        
         socket.broadcast.to(unique_id).emit('message', 'A new user has joined')
 
         callback()
